@@ -67,9 +67,17 @@ class IndexAPI(MethodView):
         }
         return make_response(jsonify(responseObject)), 201
 
+class HomeAPI(MethodView):
+    def get(self):
+        responseObject = {
+            'message': 'Welcome to CS501 Assignment 1'
+        }
+        return make_response(jsonify(responseObject)), 201
+        
 # define the API resources
 registration_view = RegisterAPI.as_view('register_api')
 index_view = IndexAPI.as_view('index_api')
+home_view = HomeAPI.as_view('home_api')
 
 # add Rules for API Endpoints
 auth_blueprint.add_url_rule(
@@ -81,5 +89,11 @@ auth_blueprint.add_url_rule(
 auth_blueprint.add_url_rule(
     '/users/index',
     view_func=index_view,
+    methods=['GET']
+)
+
+auth_blueprint.add_url_rule(
+    '/',
+    view_func=home_view,
     methods=['GET']
 )
