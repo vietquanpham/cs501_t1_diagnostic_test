@@ -8,7 +8,7 @@ database_name = 'diagnostic'
 
 class BaseConfig:
     """Base configuration."""
-    SECRET_KEY = os.getenv('SECRET_KEY', 'diagnostic_secret')
+    SECRET_KEY = os.getenv('SECRET_KEY', 'app_secret')
     DEBUG = False
     BCRYPT_LOG_ROUNDS = 13
     SQLALCHEMY_TRACK_MODIFICATIONS = False
